@@ -63,7 +63,7 @@ $( function() {
 
 	function startGame() {
 		//Réinitialisation de la vie à 3
-		$("#status span").text(3);
+		//$("#status span").text(3);
 		$("div.section").hide();
 		$("div#intro").show();
 	}

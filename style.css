@@ -6,15 +6,25 @@
 
 body {
 	font-size : 13pt;
-	font-family : "Trebuchet MS", Arial, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	background-image: url("img/background.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
+	height: 100vh;
+	background-position: center;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+	background-attachment: fixed;
+}
+
+h1, h2 {
+	text-align: center;
+	font-family: 'Bungee';
+	font-size: 5em;
+	margin-top : 0px;
 }
 
 h2 {
-	margin-top : 0px;
-	font-weight : bold;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.5em;
 }
 
 #status {
@@ -34,36 +44,54 @@ h2 {
 }
 
 .section {
-	padding : 10px;
+	position: relative;
+	padding : 30px;
 	margin : auto;
-	margin-top : 100px;
+	margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
 	max-width : 600px;
-	border : 2px solid #FFF;
+	border : 1px solid #FFF;
 	border-radius: 7px;
-	color: #FFF;
+	color: #333;
+	background-color: #F4F4F4;
 }
 .section#intro {
+	color: #FFF;
 	display : block;
+	border: none;
+	background-color: transparent;
 }
 .section button {
-	display : block;
-	width : 100%;
-	color : black;
+	background-color: transparent;
+	color: #333;
+	transition: background-color 150ms;
+	display: block;
+	width: 100%;
 	text-decoration : none;
-	padding : 5px;
+	font-size: 1em;
+	padding : 10px;
 	margin-top : 30px;
-	background : lightGray;
-	border : none;
-	cursor : pointer;
+	border: 1px solid #333;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.section#intro button {
+	border: 1px solid #F4F4F4;
+	color: #F4F4F4;
 }
 .section button+button  {
 	margin-top : 10px;
 }
+.section#intro button:hover {
+	background-color: #F4F4F4;
+	color: #333;
+}
 
 .section button:hover {
-	color : lightGray;
-	background-color : black;
+	color: #F4F4F4;
+	background-color: #333;
 }
+
 
 .battle {
 	padding : 10px 10px;
