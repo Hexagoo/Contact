@@ -24,7 +24,7 @@ $( function() {
 		//Le joueur a-t-il gagné ?
 		if( keyInt == "exit") {
 			endGame();
-			$("div.#exit").hide();
+			$("div.#exit").fadeOut(150);
 		}
 
 		//Ici on cache la section actuelle
@@ -39,7 +39,7 @@ $( function() {
 			//Quand le joueur n'a plus de vie
 			if ( v == 0 ) {
 				endGame();
-				$("div.#exit").hide();
+				$("div.#death").fadeOut(200);
 			}
 			setLife(v);
 		}
@@ -47,7 +47,7 @@ $( function() {
 	//Fonction qui permet d'être redirigé vers la section voulu
 	function gotoSection(key) {
 		//On affiche la partie sur laquelle on a cliqué
-		$(key).show();
+		$(key).fadeIn(150);
 	}
 
 	//Renvoie la vie
@@ -70,6 +70,7 @@ $( function() {
 
 	function endGame() {
 		$("div#death").show();
+
 		startGame();
 	}
 

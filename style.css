@@ -1,6 +1,15 @@
+/***********************************************************/
+/***********************************************************/
+/***** Dans l'espace personne ne vous entend pêter... ******/
+/***********************************************************/
+/***********************************************************/
+
 body {
 	font-size : 13pt;
 	font-family : "Trebuchet MS", Arial, sans-serif;
+	background-image: url("img/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 h2 {
@@ -13,15 +22,12 @@ h2 {
 	top : 0px;
 	width : 100%;
 	text-align : center;
-	border-bottom : 1px solid lightGray;
 }
 
 #status div {
 	display : inline-block;
 	padding : 10px 20px;
-	color : gray;
-	border-left : 1px solid lightGray;
-	border-right : 1px solid lightGray;
+	color : #FFF;
 }
 #status div+div {
 	border-left : none;
@@ -32,7 +38,9 @@ h2 {
 	margin : auto;
 	margin-top : 100px;
 	max-width : 600px;
-	border : 1px solid lightGray;
+	border : 2px solid #FFF;
+	border-radius: 7px;
+	color: #FFF;
 }
 .section#intro {
 	display : block;
@@ -62,5 +70,3 @@ h2 {
 	margin : 20px 0px;
 	box-shadow : 0px 2px 8px gray;
 }
-
-
