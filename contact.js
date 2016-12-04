@@ -3,45 +3,47 @@ $( function() {
 	var buttons = $(".section button");
 	var status = $("#status");
 
-	//Lancement de l'initialisation du jeu avec 3 de vie
 	startGame();
 
 	//Dès qu'un bouton sera cliqué
 	buttons.click( function() {
 		//Ici on sauvegarde la section parent du bouton appuyé à cacher
 		var sectionACacher = $(this).parents("div.section");
+
+		//Animation
+		//var test = $(this).parents("div").attr('id');
+		//if(test == "histoire") { alert("coucou")}
+
 		//On récupère l'identifiant de la section vers laquelle l'on veut aller
 		var keyInt = $(this).attr('go');
-		var key = eval(keyInt);
+		if ( keyInt == "mortRapide") { setLife() }
+		else if ( keyInt == "histoire" || keyInt == "poster") { $("img").toggleClass("bounce") }
 
+		var key = eval(keyInt);
 		//Ici on regarde si le joueur perd une vie
 		var strAction = $(key).children("action").attr('name');
 		//Si la balise action possède le nom "hit" on enlève 1 point de vie
-		if (strAction == "hit") {
-			loseOneLife();
-		}
+		if (strAction == "hit") { loseOneLife() }
+		else if (strAction == "reset") { setLife() }
 
-		//Le joueur a-t-il gagné ?
-		if( keyInt == "exit") {
-			endGame();
-			$("div.#exit").fadeOut(150);
-		}
-
-		//Ici on cache la section actuelle
+		//On cache la section actuelle
 		sectionACacher.hide();
+		//...et on affiche la nouvelle seciton
 		gotoSection(key);
 	} );
 
 	//Déclaration fonction de perte de vie
 	function loseOneLife() {
-	  	var v = getLife();
-			v -= 1;
-			//Quand le joueur n'a plus de vie
-			if ( v == 0 ) {
-				endGame();
-				$("div.#death").fadeOut(200);
+		//On stocke le dernier coeur encore plein
+		var derCoeur = getLife();
+		//et on modifie sa classe pour
+		derCoeur.attr('class', 'fa fa-heart-o');
+		//Quand le joueur n'a plus de vie
+		var encoreEnVie = $("#status").find("i.fa-heart");
+		if ( !(encoreEnVie.length > 0) ) {
+			$(".section#death").show();
+			setLife();
 			}
-			setLife(v);
 		}
 
 	//Fonction qui permet d'être redirigé vers la section voulu
@@ -52,26 +54,31 @@ $( function() {
 
 	//Renvoie la vie
 	function getLife() {
-		//On récupère le texte présent dans l'élément span
-		return $("span").text();
+		return $("#status i.fa-heart:last");
 	}
 
 	//Affiche la nouvelle vie
-	function setLife(v) {
-		$("#status span").text(v);
+	function setLife() {
+		//Réinitialisation de la vie à 3
+		$("#status i").attr('class', 'fa fa-heart');
+		endGame();
 	}
 
+	//initialisation du jeu
 	function startGame() {
-		//Réinitialisation de la vie à 3
-		//$("#status span").text(3);
 		$("div.section").hide();
 		$("div#intro").show();
 	}
 
+	//Fin du jeu
 	function endGame() {
-		$("div#death").show();
-
+		$("div.section").hide();
 		startGame();
 	}
 
-} );
+	//Mouvement
+	function animation() {
+	  $("img").addClass(".bounce");
+	}
+
+});
